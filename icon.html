@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <title>Icon my boy</title>
+</head>
+<body>
+<h1>
+    <span onClick="toggleView()">click</span>
+</h1>
+<img id="toggler" src="svg/mapicon.svg" width="422px" onClick="toggleView()" alt="Giragge in a church">
+<img id="toggler" src="svg/mapicon.svg" onClick="toggleView()" width="100px" alt="Giragge in a church">
+<img id="toggler" src="svg/mapicon.svg" onClick="toggleView()" width="42px" alt="Giragge in a church">
+
+<script>
+    let toggle = 0
+
+    function toggleView() {
+        d3.selectAll("#toggler").transition().duration(200).attr("src",
+            () => {
+                if (toggle % 2) {
+                    return "svg/mapicon.svg";
+                } else {
+                    return "svg/scatter_icon.svg";
+                }
+            })
+        console.log(d3.select("#toggler").attr("src"))
+        toggle++;
+
+        //d3.select("#toggler svg").selectAll('*').attr("visibility", "hidden")
+        d3.select("#pippo").attr("src", "svg/mapicon.svg")
+        console.log()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="440px" height="440px" viewBox="0 0 440 440" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>dot-plot</title>
+    <defs>
+        <filter x="-2.8%" y="-2.8%" width="105.7%" height="105.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-2" x="8" y="117" width="405.515625" height="296.71875"></rect>
+        <filter x="-1.7%" y="-1.7%" width="103.5%" height="104.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(9.000000, 9.000000)" fill-rule="nonzero">
+            <g id="dot-plot" filter="url(#filter-1)">
+                <g id="Box">
+                    <g id="Rectangle">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="#F0F0FA" xlink:href="#path-2"></use>
+                    </g>
+                    <circle id="Oval-Copy" fill="#878791" cx="211" cy="31.3203125" r="23.078125"></circle>
+                    <path d="M282.904844,422 C280.736324,422 278.610664,421.118086 277.069375,419.585039 C275.536328,418.051992 274.662656,415.925508 274.662656,413.757812 C274.662656,411.590117 275.536328,409.463633 277.069375,407.930586 C278.610664,406.397539 280.728082,405.515625 282.904844,405.515625 C285.072539,405.515625 287.199023,406.397539 288.731246,407.930586 C290.264293,409.463633 291.147031,411.590117 291.147031,413.757812 C291.147031,415.925508 290.265117,418.051992 288.731246,419.585039 C287.190781,421.118086 285.072539,422 282.904844,422 Z" id="Path-Copy" fill="#000000"></path>
+                    <path d="M413.757812,108.796875 L314.85898,108.796875 L239.346531,44.6240273 C241.250477,40.583707 242.320312,36.0752305 242.320312,31.3203125 C242.320312,14.050457 228.269855,0 211,0 C193.730145,0 179.679688,14.050457 179.679688,31.3203125 C179.679688,36.0752305 180.749523,40.583707 182.654293,44.6248516 L107.141844,108.796875 L8.2421875,108.796875 C3.69085156,108.796875 0,112.486902 0,117.039062 L0,413.757812 C0,418.309973 3.69085156,422 8.2421875,422 L240.671875,422 C245.223211,422 248.914062,418.309973 248.914062,413.757812 C248.914062,409.205652 245.223211,405.515625 240.671875,405.515625 L16.484375,405.515625 L16.484375,125.28125 L405.515625,125.28125 L405.515625,405.515625 L324.742188,405.515625 C320.190852,405.515625 316.5,409.205652 316.5,413.757812 C316.5,418.309973 320.190852,422 324.742188,422 L413.757812,422 C418.309148,422 422,418.309973 422,413.757812 L422,117.039062 C422,112.487727 418.309973,108.796875 413.757812,108.796875 Z M211,16.484375 C219.180371,16.484375 225.835938,23.1399414 225.835938,31.3203125 C225.835938,39.5006836 219.180371,46.15625 211,46.15625 C202.819629,46.15625 196.164062,39.5006836 196.164062,31.3203125 C196.164062,23.1399414 202.819629,16.484375 211,16.484375 Z M193.34441,57.1727578 C198.374617,60.6196406 204.454879,62.640625 211,62.640625 C217.545121,62.640625 223.625383,60.6196406 228.656414,57.1727578 L289.402984,108.796875 L132.597016,108.796875 L193.34441,57.1727578 Z" id="Shape-Copy" fill="#000000"></path>
+                </g>
+                <g id="datas" transform="translate(60.000000, 153.000000)" stroke="#000000" stroke-width="13">
+                    <circle id="Oval" fill="#F5B955" cx="44.5" cy="205.5" r="23.5"></circle>
+                    <circle id="Oval" fill="#FF6E37" cx="23.5" cy="132.5" r="23.5"></circle>
+                    <circle id="Oval-Copy-2" fill="#FF6E37" cx="132.5" cy="179.5" r="23.5"></circle>
+                    <path d="M284.5,133 C294.580815,133 303.179104,126.652551 306.516182,117.736338 C307.475473,115.173243 308,112.397876 308,109.5 C308,96.5213084 297.478692,86 284.5,86 C271.521308,86 261,96.5213084 261,109.5 C261,122.478692 271.521308,133 284.5,133 Z" id="Oval" fill="#FF5A5A"></path>
+                    <path d="M94.5,109 C99.8446713,109 104.772614,107.215774 108.720688,104.210462 C114.35989,99.9178473 118,93.1340203 118,85.5 C118,72.5213084 107.478692,62 94.5,62 C81.5213084,62 71,72.5213084 71,85.5 C71,98.4786916 81.5213084,109 94.5,109 Z" id="Oval" fill="#6E87F5"></path>
+                    <circle id="Oval" fill="#A5DC69" cx="260.5" cy="23.5" r="23.5"></circle>
+                    <circle id="Oval" fill="#F5B955" cx="220.5" cy="158.5" r="23.5"></circle>
+                    <circle id="Oval" fill="#FF5A5A" cx="156.5" cy="23.5" r="23.5"></circle>
+                    <circle id="Oval" fill="#FF5A5A" cx="213.5" cy="85.5" r="23.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

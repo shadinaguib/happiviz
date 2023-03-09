@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <!-- Stylesheets for the searchable dropdown -->
+    <!--     <link rel="stylesheet" href="./mselect/chosen.min.css">
+     -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script type="text/javascript" src="./mselect/jquery-3.5.1.min.js"></script>
+    <!--     <script type="text/javascript" src="./mselect/jquery-3.5.1.min.js"></script>
+     -->
+    <link href="introjs/introjs.css" rel="stylesheet" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./mselect/chosen.jquery.min.js"></script>
+
+    <!-- Load minified d3.js library -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-path.v1.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <link href="dist/css/component-chosen.css" rel="stylesheet">
+
+    <title>Data Visualization</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Avenir Next", sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            fill: #242424;
+            text-align: center;
+            /* text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff; */
+            cursor: default;
+
+        }
+    </style>
+</head>
+<body style="background-color:#e9e7e7">
+
+<div id="landing">
+    <div class="sticky">
+        <nav class="navbar navbar-blue default-color justify-content-between">
+            <a class="navbar-brand" href="#">Happiviz</a>
+            <form class="form-inline my-1">
+                <a onclick="showTutorial()"
+                    style="color:#212529; font-size:14px; font-family:'Avenir Next', sans-serif; margin-right: 10px">Tutorial</a>
+                <a href="./reports/final_report.pdf"
+                   style="color:#212529; font-size:14px; font-family:'Avenir Next', sans-serif; margin-right: 10px">Process
+                    Book</a>
+                <a href="https://youtu.be/jUsvTaDjRjE"
+                   style="color:#212529; font-size:14px; font-family:'Avenir Next', sans-serif;">Screencast</a>
+            </form>
+
+        </nav>
+    </div>
+    <div class="#visual">
+        <h1>Happiviz</h1>
+        <a href="#visual" style="font-size: xx-large;">Click to see visualization</a>
+    </div>
+</div>
+
+<div id="visual" class="container-fluid pl-8 pr-8">
+    <div class="row">
+        <div class="col-8" data-step="1" data-intro="This is a map colored by happiness!" data-position='right' data-scrollTo="#visual">
+            <!-- MAP -->
+            <div class="project-row project-spaced">
+                <div class="project-row">
+                    <form style="margin-right:3px" data-step="2" data-intro="You can change the year by using this form"
+                          data-position='left'>
+                        <select id="year" class="form-control" onchange="map_changeYear()">
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option selected value="2019">2019</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="project-row">
+                    <div id='flag'></div>
+                </div>
+                <div class="float-right">
+                    <div class="icons" data-step="4" data-intro="Will you find some correlations on the metrics?" data-scrollTo="#visual">
+                        <img id="gdp-icon" class="submetric project-hide scatter-icon" src="svg/gdp_icon.svg"
+                             data-toggle='tooltip' title="GDP" onClick="scatter_changeSubmetric('gdp_per_capita')"
+                             width="40px" alt="Giraffe in a church">
+                        <img id="corr-icon" class="submetric project-hide scatter-icon" src="svg/trust_icon.svg"
+                             data-toggle='tooltip' title="Trust"
+                             onClick="scatter_changeSubmetric('corruption_perceptions')" width="40px"
+                             alt="Giraffe in a church">
+                        <img id="gen-icon" class="submetric project-hide scatter-icon" src="svg/generosity_icon.svg"
+                             data-toggle='tooltip' title="Generosity" onClick="scatter_changeSubmetric('generosity')"
+                             width="40px" alt="Giraffe in a church">
+                        <img id="freed-icon" class="submetric project-hide scatter-icon" src="svg/freedom_icon.svg"
+                             data-toggle='tooltip' title="Freedom"
+                             onClick="scatter_changeSubmetric('freedom_to_life_choice')" width="40px"
+                             alt="Giraffe in a church">
+                        <img id="health-icon" class="submetric project-hide scatter-icon" src="svg/health_icon.svg"
+                             data-toggle='tooltip' title="Health"
+                             onClick="scatter_changeSubmetric('healthy_life_expectancy')" width="40px"
+                             alt="Giraffe in a church">
+                        <img id="supp-icon" class="submetric project-hide scatter-icon" src="svg/support_icon.svg"
+                             data-toggle='tooltip' title="Support" onClick="scatter_changeSubmetric('social_support')"
+                             width="40px" alt="Giraffe in a church">
+                        <img id="toggler" src="svg/scatter_icon.svg" title="Change to scatter view"
+                             data-toggle='tooltip' onClick="toggleView()" width="40px" alt="Giraffe in a church"
+                             data-step="3" data-click data-intro="And pass to the scatter when you get bored<br>there you can see the relation of happiness and the other metrics">
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
+                </div>
+            </div>
+            <div id="mapContainer" class="svg-container" style="padding-bottom: 50%;">
+                <svg id="map" class="svg-content" viewBox="100 175 1030 600" preserveAspectRatio="none"
+                     style="padding-bottom: 50%;"></svg>
+            </div>
+            <div id="scatterContainer" class="svg-container project-hide" style="padding-bottom: 50%;">
+                <svg id="scatter" class="svg-content" viewBox="0 0 1000 600" preserveAspectRatio="none"></svg>
+            </div>
+        </div>
+
+        <div class="col-4" data-step="6" data-intro="Countries selected in the map and scatter appear here.">
+            <!-- RADAR -->
+            <form data-step="7" data-intro="You can also search for countries here, up to a total of four.">
+                <select id='mselect' multiple="" class='form-control form-control-chosen' onchange="radar_update();">
+                </select>
+                <script type="text/javascript">
+                    $('.form-control-chosen').chosen({
+                        max_selected_options: 3, //Max select limit
+                        placeholder_text_multiple: "Select some countries",
+                    });
+                    document.querySelector('.chosen-container').setAttribute('style', 'width: el')
+                    document.querySelector('.chosen-choices').setAttribute('style', 'width: el')
+                    document.querySelector('.chosen-drop').setAttribute('style', 'width: el')
+                </script>
+
+                <button type="button" id='clear-all' class="btn btn-outline-secondary"
+                        onclick="radar_clear()">
+                    <svg class="bi bi-bootstrap-reboot" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 0 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.812 6.812 0 0 0 1.16 8zm5.48-.079V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6zm0 3.75V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141z"/>
+                    </svg>
+                </button>
+            </form>
+            <div id="radarContainer" class="svg-container" style="padding-bottom: 60%;">
+                <svg id="radarContent" class="radarContent svg-content" viewBox="0 0 500 500"
+                     preserveAspectRatio="none"></svg>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: -20% ">
+        <div class="col-8" data-step="8" data-intro="Use the bar chart to compare every country in one look!" data-scrollTo="#visual">
+            <!-- BAR -->
+            <div class="svg-container" style="padding-bottom: 22%">
+                <svg id="bar" viewBox="0 0 1000 280" class="svg-content" preserveAspectRatio="none"></svg>
+            </div>
+        </div>
+        <div class="col-4"> <!-- LEGEND -->
+            <div>
+                <div class="icons" data-step="4" data-intro="Will you find some correlations?"
+                     style="padding-left:10em; padding-right:10em; padding-top:3em">
+                    <!-- <h1 style="font-size:2vw; text-align:center">Metrics</h1> -->
+                    <div class="row">
+                        <div class="col">
+                            <img id="gdp-icon" class="scatter-icon2 resp-icon" src="svg/gdp_icon.svg"
+                                 data-toggle='tooltip'
+                                 alt="Giraffe in a church"
+                                 title="Average income earned per person">
+                        </div>
+                        <div class="col">
+                            <img id="corr-icon" class="scatter-icon2 resp-icon" src="svg/trust_icon.svg"
+                                 data-toggle='tooltip'
+                                 alt="Giraffe in a church"
+                                 title="A belief in the honesty, integrity and reliability"></div>
+                        <div class="col">
+                            <img id="gen-icon" class="scatter-icon2 resp-icon" src="svg/generosity_icon.svg"
+                                 data-toggle='tooltip'
+                                 alt="Giraffe in a church"
+                                 title="People contribution to charity"></div>
+                    </div>
+                    <div class="row" style="margin-top: 1em;">
+                        <div class="col">
+                            <img id="freed-icon" class="scatter-icon2 resp-icon" src="svg/freedom_icon.svg"
+                                 data-toggle='tooltip'
+                                 alt="Giraffe in a church"
+                                 title="Preceived freedom of choice">
+                        </div>
+                        <div class="col">
+                            <img id="health-icon" class="scatter-icon2 resp-icon" src="svg/health_icon.svg"
+                                 data-toggle='tooltip'
+                                 alt="Giraffe in a church"
+                                 title="Years length a new born is expected to live">
+                        </div>
+                        <div class="col">
+                            <img id="supp-icon" class="scatter-icon2 resp-icon" src="svg/support_icon.svg"
+                                 data-toggle='tooltip'
+                                 alt="Giraffe in a church"
+                                 title="Perception of being cared for">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            let toggle = 0
+
+            function toggleView() {
+                d3.selectAll("#toggler").transition().duration(200).attr("src",
+                    () => {
+                        if (toggle % 2) {
+                            map_show();
+                            return "svg/scatter_icon.svg";
+                        } else {
+                            scatter_show();
+                            return "svg/mapicon.svg";
+                        }
+                    })
+                    .attr("title",
+                        () => {
+                            if (toggle % 2)
+                                return "Change to scatter view";
+                            else
+                                return "Change to map view";
+                        });
+                toggle++;
+            }
+        </script>
+        <script>
+        function showTutorial() {
+            window.setTimeout(introJs().start(), 2000);
+            window.location.href='#visual';
+        }
+        </script>
+
+        <!-- <script type="text/javascript">
+
+            function scroll_and_intro () {
+                console.log('In scroll and intro')
+                var elmnt = document.getElementById("visual");
+                elmnt.scrollIntoView(false);
+                //window.scrollTo(0,window.body.scrollHeight);
+                //location.href = '#visual'
+                //window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+                introJs().start();
+                }
+
+        </script> -->
+
+        <script src="radar.js" charset="utf-8"></script>
+        <script src="scatter.js"></script>
+        <script src="display.js"></script>
+        <script src="map.js"></script>
+        <script src='bar_chart/bar_chart.js'></script>
+        <script src="introjs/intro.js"></script>
+</body>
+</html>
